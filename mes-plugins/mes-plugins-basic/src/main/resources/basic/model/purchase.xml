@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="purchase" activable="true" auditable="true"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schema.qcadoo.org/model"
+	xsi:schemaLocation="http://schema.qcadoo.org/model http://schema.qcadoo.org/model.xsd">
+	<fields>
+		<belongsTo name="product" model="product"></belongsTo>
+		<integer name="quantity">
+			<validatesRange from="0" />
+		</integer>
+		<decimal name="price">
+			<validatesRange from="0" />
+		</decimal>
+		<datetime name="date"></datetime>
+	</fields>
+	<hooks>
+	<validatesWith class="com.qcadoo.mes.basic.hooks.PurchaseHooks" method="checkIfSimilarPurchaseExists"/>
+	</hooks>
+</model>
